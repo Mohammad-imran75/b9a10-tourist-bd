@@ -13,7 +13,8 @@ import "swiper/css/scrollbar";
 
 const Slider = () => {
     return (
-        <Swiper
+       <div className="font-nunito-sans">
+         <Swiper
         modules={[Navigation, Pagination, Scrollbar, A11y, EffectFade]}
         spaceBetween={50}
         effect="flip"
@@ -139,6 +140,7 @@ const Slider = () => {
           </div>
         </SwiperSlide>
       </Swiper>
+       </div>
     );
 };
 
