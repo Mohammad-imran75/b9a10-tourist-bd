@@ -9,6 +9,7 @@ const Navbar = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const [currentUser , setCurrentUser] = useState();
+  console.log(currentUser)
   useEffect(()=>{
     setCurrentUser(user)
   },[user])
@@ -100,7 +101,16 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{NavLinks}</ul>
       </div>
+      
       <div className="navbar-end">
+      <div>
+          <img
+            className="w-12 rounded-full lg: mr-4"
+            title={currentUser?.displayName}
+            src={currentUser?.photoURL}
+            alt=""
+          />
+        </div>
         {currentUser ? (
           <>
             <div>
