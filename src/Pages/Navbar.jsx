@@ -1,13 +1,36 @@
-import { Link, NavLink } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Link, NavLink, Navigate, useLoaderData, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
+  const { logOut, user } = useContext(AuthContext);
+  console.log(user)
+  const navigate = useNavigate()
+  const location = useLocation()
+  const [currentUser , setCurrentUser] = useState();
+  useEffect(()=>{
+    setCurrentUser(user)
+  },[user])
+  const handleSignOut = () => {
+    logOut()
+      .then((result) => {
+        navigate(location?.state ? location.state : "/");
+        Swal.fire({
+          icon: "success",
+          title: "Yeah....",
+          text: "Please try anoth!",
+        });
+      })
+      .catch((error) => console.error(error));
+  };
   const NavLinks = (
     <>
       <NavLink
         className={({ isActive }) =>
           isActive
-          ? "text-orange-600 font-bold border-b-4 border-orange-500 mr-4 pb-1"
-          : "text-black mr-4"
+            ? "text-orange-600 font-bold border-b-4 border-orange-500 mr-4 pb-1"
+            : "text-black mr-4"
         }
         to="/"
       >
@@ -26,8 +49,8 @@ const Navbar = () => {
       <NavLink
         className={({ isActive }) =>
           isActive
-          ? "text-orange-600 font-bold border-b-4 border-orange-500 mr-4 pb-1"
-          : "text-black mr-4"
+            ? "text-orange-600 font-bold border-b-4 border-orange-500 mr-4 pb-1"
+            : "text-black mr-4"
         }
         to="/addTourist"
       >
@@ -36,8 +59,8 @@ const Navbar = () => {
       <NavLink
         className={({ isActive }) =>
           isActive
-          ? "text-orange-600 font-bold border-b-4 border-orange-500 mr-4 pb-1"
-          : "text-black mr-4"
+            ? "text-orange-600 font-bold border-b-4 border-orange-500 mr-4 pb-1"
+            : "text-black mr-4"
         }
         to="/mylist"
       >
@@ -78,8 +101,34 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{NavLinks}</ul>
       </div>
       <div className="navbar-end">
-        <Link to='/login'><button className="btn mr-2 btn-secondary bg-purple-400">Login</button></Link>
-        <Link to='/register'><button className="btn mr-2 btn-secondary bg-purple-400">Register</button></Link>
+        {currentUser ? (
+          <>
+            <div>
+              <button
+                onClick={handleSignOut}
+                className="btn btn-secondary bg-purple-400"
+              >
+                Sign Out
+              </button>
+            </div>
+          </>
+        ) : (
+          <>
+            
+            <div>
+              <Link to="/login">
+                <button className="btn mr-2 btn-secondary bg-purple-400">
+                  Login
+                </button>
+              </Link>
+              <Link to="/register">
+                <button className="btn mr-2 btn-secondary bg-purple-400">
+                  Register
+                </button>
+              </Link>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

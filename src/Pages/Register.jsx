@@ -1,13 +1,15 @@
 import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Provider/AuthProvider";
-import { Result } from "postcss";
+
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState();
-  const {createUser} = useContext(AuthContext);
+  const {createUser,updateUser} = useContext(AuthContext);
+  const location = useLocation()
+  const navigate = useNavigate()
   const handleSignIn = (e) => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
@@ -31,13 +33,20 @@ const Register = () => {
       });
       return;
     }
-    createUser(email,password)
-    .then(result=>{
-        Swal.fire({
-            icon: "success",
-            title: "Yah....",
-            text: "Registration in Successfull!",
-          });
+    createUser(email,password,name,photo)
+    .then(()=>{
+        updateUser(name,photo)
+        .then(()=>{
+            navigate(location?.state ? location.state : "/login");
+            Swal.fire({
+                icon: "success",
+                title: "Yeah....",
+                text: "Registration in successfull!",
+              });
+
+        })
+        
+       
         console.log(result)
     }).catch(error=>console.error(error))
   };
