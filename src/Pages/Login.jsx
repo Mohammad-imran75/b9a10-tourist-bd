@@ -6,23 +6,29 @@ import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
 
 const Login = () => {
-  const { createUser,setUser,googleLogin } = useContext(AuthContext);
+  const { signInUser,setUser,googleLogin } = useContext(AuthContext);
   const handleLoginUser = (e) => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
     const email = form.get("email");
     const password = form.get("password");
-    // console.log(email,password)
-    createUser(email, password)
-      .then((result) => {
+    console.log(email,password)
+    signInUser(email,password)
+    .then(result=>{
         Swal.fire({
-          icon: "success",
-          title: "Yah....",
-          text: "Loging in Successfull!",
-        });
-        console.log(result);
-      })
-      .then((error) => console.error("Error during login:", error));
+            icon: "success",
+            title: "Yah....",
+            text: "Login in Successfull!",
+          });
+    }).catch(error=>{
+        Swal.fire({
+            icon: "error",
+            title: "Yah....",
+            text: "Please try another!",
+          });
+    })
+
+    
   };
   const handleGoogleLogin=()=>{
     googleLogin()

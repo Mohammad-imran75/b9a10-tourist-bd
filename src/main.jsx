@@ -15,6 +15,7 @@ import AllTouristSpot from './Routes/AllTouristSpot.jsx';
 import Login from './Pages/Login.jsx';
 import Register from './Pages/Register.jsx';
 import AuthProvider from './Provider/AuthProvider.jsx';
+import ErrorPage from './Pages/ErrorPage.jsx';
 
 
 
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Routes></Routes>,
+    errorElement:<ErrorPage/>,
     children:[
       {
         path:'/',

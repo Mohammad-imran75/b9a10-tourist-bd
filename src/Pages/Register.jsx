@@ -7,7 +7,7 @@ import { Result } from "postcss";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState();
-  const {signInUser} = useContext(AuthContext);
+  const {createUser} = useContext(AuthContext);
   const handleSignIn = (e) => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
@@ -31,7 +31,7 @@ const Register = () => {
       });
       return;
     }
-    signInUser(email,password)
+    createUser(email,password)
     .then(result=>{
         Swal.fire({
             icon: "success",
