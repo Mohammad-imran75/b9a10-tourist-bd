@@ -22,12 +22,12 @@ const AllTouristSpot = () => {
     });
 
   return (
-    <div>
-      <div className="text-center mt-10 ">
+    <div className="font-montserrat">
+      <div className="text-center font-bold text-2xl mt-10 ">
         Sorting :
         <select value={sortOrder} onChange={handleSortOrderChange}>
-          <option className="font-bold" value="ascending">Ascending</option>
-          <option className="font-bold" value="descending">Descending</option>
+          <option className="font-bold text-2xl" value="ascending">Ascending</option>
+          <option className="font-bold text-2xl" value="descending">Descending</option>
         </select>
       </div>
       <div className="grid lg:grid-cols-2 gap-4 mt-10 p-4">
