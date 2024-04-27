@@ -14,6 +14,8 @@ import Register from "./Pages/Register.jsx";
 import AuthProvider from "./Provider/AuthProvider.jsx";
 import ErrorPage from "./Pages/ErrorPage.jsx";
 import AllTouristSpot from "./Routes/AllTouristSpot.jsx";
+import PrivateRoutes from "./Provider/PrivateRoutes.jsx";
+import ViewDetailsPage from "./Pages/ViewDetailsPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -46,7 +48,11 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>,
-      },
+      },{
+        path:'/viewDetails/:_id',
+        element:<ViewDetailsPage></ViewDetailsPage>,
+        loader:()=>fetch("http://localhost:5000/touristSpots")
+      }
     ],
   },
 ]);

@@ -1,16 +1,15 @@
 import { FaLocationPin } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 const SpotCard = ({ spot }) => {
   console.log(spot);
   const {
+    _id,
     touristSpot,
-    name,
-    email,
     totalVisitor,
     traveltime,
     seasonality,
     cost,
-    description,
     location,
     coutryName,
     photo,
@@ -37,9 +36,9 @@ const SpotCard = ({ spot }) => {
         <p>Average Cost : {cost}</p>
         <p>Travel Time: {traveltime}</p>
         </div>
-        <p>Description:{description}</p>
-        <h1>Tourist Name : {name}</h1>
-        <h1>Tourist email : {email}</h1>
+        <div className="btn-end">
+            <Link to={`/viewDetails/${_id}`}><button className="btn btn-secondary bg-purple-500 w-full mt-2">View Details</button></Link>
+        </div>
       </div>
     </div>
   );

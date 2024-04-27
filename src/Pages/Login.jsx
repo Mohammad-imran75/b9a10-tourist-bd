@@ -1,11 +1,13 @@
 import { useContext } from "react";
 import { FaGithubSquare } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
 
 const Login = () => {
+    const navigate = useNavigate()
+    const location = useLocation()
   const { signInUser,setUser,googleLogin } = useContext(AuthContext);
   const handleLoginUser = (e) => {
     e.preventDefault();
@@ -15,6 +17,7 @@ const Login = () => {
     console.log(email,password)
     signInUser(email,password)
     .then(result=>{
+        navigate(location?.state ? location.state : "/");
         Swal.fire({
             icon: "success",
             title: "Yah....",

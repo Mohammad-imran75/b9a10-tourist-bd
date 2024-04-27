@@ -1,12 +1,15 @@
 import { useLoaderData } from "react-router-dom";
+import SingleSpot from "./SingleSpot";
 
 
 const AllTouristSpot = () => {
     const allTouristSpot = useLoaderData();
-    console.log(allTouristSpot)
+    
     return (
-        <div>
-            <h1 className="text-5xl">allTourist {allTouristSpot.length}</h1>
+        <div className="grid lg:grid-cols-2 gap-4 mt-10 p-4">
+            {
+                allTouristSpot.map(item=><SingleSpot key={item._id} item={item}></SingleSpot>)
+            }
         </div>
     );
 };

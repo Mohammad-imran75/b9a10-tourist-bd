@@ -10,7 +10,8 @@ const Home = () => {
         <div>
             <div>
                 <Slider></Slider>
-                <div className="grid lg:grid-cols-2 gap-4 mt-10 p-4">
+                <h2 className="text-5xl text-center mt-7 text-stone-700 font-extrabold">Tourist <span className="text-purple-600">Spot</span> <br /> seciton</h2>
+                <div className="grid lg:grid-cols-3 gap-4 mt-10 p-4">
                     {
                         touristSpots.map(spot=><SpotCard key={spot._id} spot={spot}></SpotCard>)
                     }
