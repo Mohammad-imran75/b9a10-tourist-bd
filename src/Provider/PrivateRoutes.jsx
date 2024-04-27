@@ -1,21 +1,27 @@
-import { useContext } from "react";
-import { AuthContext } from "./AuthProvider";
+import  { useContext } from "react";
+
 import { Navigate, useLocation } from "react-router-dom";
-import PropTypes from "prop-types"
-const PrivateRoutes = ({children}) => {
-    const {loading,user} = useContext(AuthContext);
+import PropTypes from "prop-types";
+import { AuthContext } from "./AuthProvider";
+const PrivateRoutes = ({ children }) => {
     const location = useLocation();
-    if(loading){
-        return (<span className="loading loading-spinner text-neutral"></span>)
-    }
-    if(user){
-        return children;
-    }
+  const { user, loading } = useContext(AuthContext);
+  if (loading) {
     return (
-        <Navigate state={location.pathname} to='/login'></Navigate>
+      <>
+        <span className="loading loading-spinner text-neutral"></span>
+        <span className="loading loading-spinner text-info"></span>
+      </>
     );
+  }
+  if(user){
+    return children
+  }else{
+    return <Navigate state={location.pathname} to='/login'></Navigate>
+  }
+  
 };
-PrivateRoutes.propTypes ={
-    children:PropTypes.node
-}
+PrivateRoutes.propTypes = {
+    children: PropTypes.node.isRequired,
+  };
 export default PrivateRoutes;

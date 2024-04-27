@@ -1,18 +1,25 @@
 import { useContext, useEffect, useState } from "react";
-import { Link, NavLink, Navigate, useLoaderData, useLocation, useNavigate } from "react-router-dom";
+import {
+  Link,
+  NavLink,
+  Navigate,
+  useLoaderData,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
 
 const Navbar = () => {
   const { logOut, user } = useContext(AuthContext);
-  console.log(user)
-  const navigate = useNavigate()
-  const location = useLocation()
-  const [currentUser , setCurrentUser] = useState();
-  console.log(currentUser)
-  useEffect(()=>{
-    setCurrentUser(user)
-  },[user])
+  console.log(user);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [currentUser, setCurrentUser] = useState();
+  console.log(currentUser);
+  useEffect(() => {
+    setCurrentUser(user);
+  }, [user]);
   const handleSignOut = () => {
     logOut()
       .then((result) => {
@@ -27,26 +34,33 @@ const Navbar = () => {
   };
   const NavLinks = (
     <>
-      <NavLink
-        className={({ isActive }) =>
-          isActive
-            ? "text-orange-600 font-bold border-b-4 border-orange-500 mr-4 pb-1"
-            : "text-black mr-4"
-        }
-        to="/"
-      >
-        Home
-      </NavLink>
-      <NavLink
-        className={({ isActive }) =>
-          isActive
-            ? "text-orange-600 font-bold border-b-4 border-orange-500 mr-4 pb-1"
-            : "text-black mr-4"
-        }
-        to="/allTourist"
-      >
-        All Tourist Spot
-      </NavLink>
+      <li>
+        {" "}
+        <NavLink
+          className={({ isActive }) =>
+            isActive
+              ? "text-orange-600 font-bold border-b-4 border-orange-500 mr-4 pb-1"
+              : "text-black mr-4"
+          }
+          to="/"
+        >
+          Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          className={({ isActive }) =>
+            isActive
+              ? "text-orange-600 font-bold border-b-4 border-orange-500 mr-4 pb-1"
+              : "text-black mr-4"
+          }
+          to="/allTourist"
+        >
+          All Tourist Spot
+        </NavLink>
+      </li>
+     {
+      user ? <> <li>
       <NavLink
         className={({ isActive }) =>
           isActive
@@ -57,6 +71,8 @@ const Navbar = () => {
       >
         Add Tourist Spot
       </NavLink>
+    </li>
+    <li>
       <NavLink
         className={({ isActive }) =>
           isActive
@@ -67,6 +83,8 @@ const Navbar = () => {
       >
         My List
       </NavLink>
+    </li></>:""
+     }
     </>
   );
   return (
@@ -101,9 +119,9 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{NavLinks}</ul>
       </div>
-      
+
       <div className="navbar-end">
-      <div>
+        <div>
           <img
             className="w-12 rounded-full lg: mr-4"
             title={currentUser?.displayName}
@@ -124,7 +142,6 @@ const Navbar = () => {
           </>
         ) : (
           <>
-            
             <div>
               <Link to="/login">
                 <button className="btn mr-2 btn-secondary bg-purple-400">

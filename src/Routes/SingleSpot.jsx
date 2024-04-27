@@ -16,7 +16,7 @@ const SingleSpot = ({ item }) => {
     photo,
   } = item;
   return (
-    <div className="card font-montserrat font-semibold bg-stone-400 shadow-lg space-y-3">
+    <div className="card font-montserrat font-semibold bg-pink-300 shadow-lg space-y-3">
       <figure>
         <img
           className="lg:w-[600px] h-full rounded-xl p-8"
