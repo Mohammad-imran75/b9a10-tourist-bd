@@ -1,9 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import MyListSingleSpot from "./MyListSingleSpot";
+import { Helmet } from "react-helmet";
 
 const MyList = () => {
-  const { user, loading } = useContext(AuthContext);
+  const { user} = useContext(AuthContext);
   const [spots, setSpots] = useState([]);
   console.log(spots);
   const url = `http://localhost:5000/touristSpots?email=${user?.email}`;
@@ -15,6 +16,10 @@ const MyList = () => {
 
   return (
     <div>
+         <Helmet>
+        <title>My List Page</title>
+        <meta name="description" content="Helmet application" />
+      </Helmet>
       {
         <div className="gird lg:grid-cols-2 mt-10 bg-blue-300">
           {spots.map((spot) => (

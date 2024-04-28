@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const MyListSingleSpot = ({ spot }) => {
-//   console.log(spot);
+
   const [spots,setSpots] = useState(spot);
   const {_id,photo,location,touristSpot,coutryName}= spots;
   const handleDelete = (_id) => {
@@ -37,6 +38,10 @@ const MyListSingleSpot = ({ spot }) => {
   };
   return (
     <div className="p-4">
+         <Helmet>
+        <title>MyListSingle spot</title>
+        <meta name="description" content="Helmet application" />
+      </Helmet>
       <div className="overflow-x-auto">
         <table className="table">
          

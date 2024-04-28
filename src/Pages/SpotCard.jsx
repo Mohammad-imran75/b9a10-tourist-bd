@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import { FaLocationPin } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
@@ -16,6 +17,10 @@ const SpotCard = ({ spot }) => {
   } = spot;
   return (
     <div className="card font-montserrat font-semibold bg-stone-400 shadow-lg space-y-3">
+       <Helmet>
+        <title>Spot Card</title>
+        <meta name="description" content="Helmet application" />
+      </Helmet>
       <figure>
         <img
         className="lg:w-[600px] h-full rounded-xl p-8"

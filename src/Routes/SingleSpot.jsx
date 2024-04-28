@@ -1,49 +1,49 @@
 import React from "react";
-import { FaLocationPin } from "react-icons/fa6";
+import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
 
 const SingleSpot = ({ item }) => {
   const {
     touristSpot,
-    name,
-    email,
+    _id,
+
     totalVisitor,
     traveltime,
     seasonality,
     cost,
-    description,
-    location,
-    coutryName,
+
     photo,
   } = item;
   return (
-    <div className="card font-montserrat font-semibold bg-pink-300 shadow-lg space-y-3">
+    <div className="card card-side font-montserrat font-semibold bg-violet-400 shadow-lg space-y-3">
+      <Helmet>
+        <title>SingleSpot page</title>
+        <meta name="description" content="Helmet application" />
+      </Helmet>
       <figure>
         <img
-          className="lg:w-[600px] h-full rounded-xl p-8"
+          className="lg:w-[300px] h-full rounded-xl p-8"
           src={photo}
           alt="Movie"
         />
       </figure>
       <div className="card-body">
-        <h2 className="text-stone-900 font-bold">
-          Country Name : {coutryName}
-        </h2>
         <h2 className="card-title">{touristSpot}</h2>
         <div className="flex justify-between">
           <p>Total Visitor : {totalVisitor}</p>
           <p>Seasonality : {seasonality}</p>
         </div>
-        <p className="text-bold flex items-center gap-4">
-          <FaLocationPin className="text-red-500 text-2xl"></FaLocationPin>
-          {location}
-        </p>
         <div className="flex justify-between">
           <p>Average Cost : {cost}</p>
           <p>Travel Time: {traveltime}</p>
         </div>
-        <p>Description:{description}</p>
-        <h1>Tourist Name : {name}</h1>
-        <h1>Tourist email : {email}</h1>
+        <div>
+          <Link to={`/allTouristViewdetails/${_id}`}>
+            <button className="btn btn-primary bg-emerald-700">
+              View Details
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
   );

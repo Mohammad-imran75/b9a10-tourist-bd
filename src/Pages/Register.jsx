@@ -3,6 +3,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Provider/AuthProvider";
+import { Helmet } from "react-helmet";
 
 
 const Register = () => {
@@ -52,6 +53,10 @@ const Register = () => {
   };
   return (
     <div className="mt-10 bg-pink-200 p-7 font-raleway">
+       <Helmet>
+        <title>Register Page</title>
+        <meta name="description" content="Helmet application" />
+      </Helmet>
       <div className="md:w-3/4 lg:w-1/3 mx-auto shadow bg-pink-200 ">
         <form onSubmit={handleSignIn} className="card-body bg-gray-300">
           <div className="form-control">

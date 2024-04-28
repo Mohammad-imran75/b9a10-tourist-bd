@@ -4,6 +4,7 @@ import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
     const navigate = useNavigate()
@@ -47,6 +48,10 @@ const Login = () => {
   }
   return (
     <div className="hero mt-10 bg-gray-200 p-10 font-nunito-sans">
+       <Helmet>
+        <title>Login Page</title>
+        <meta name="description" content="Helmet application" />
+      </Helmet>
       <div className="hero-content flex-col ">
         <h1 className="text-5xl font-bold">Please Login now!</h1>
 

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import { FaLocationPin } from "react-icons/fa6";
 import { useLoaderData, useParams } from "react-router-dom";
 
@@ -17,6 +18,10 @@ const ViewDetailsPage = () => {
   }, [data, _id]);
   return (
     <div>
+       <Helmet>
+        <title>View Details Page</title>
+        <meta name="description" content="Helmet application" />
+      </Helmet>
         {item && (
             <>
               <div className="card mt-4 card-side font-montserrat font-semibold bg-pink-300 shadow-lg ">

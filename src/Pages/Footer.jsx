@@ -1,9 +1,14 @@
+import { Helmet } from "react-helmet";
 import { FaMessage, FaPhone } from "react-icons/fa6";
 
 const Footer = () => {
   return (
    <div>
      <footer className="footer p-10 bg-stone-400 font-bold text-black">
+     <Helmet>
+        <title>Footer Part</title>
+        <meta name="description" content="Helmet application" />
+      </Helmet>
       <nav>
         <h6 className="footer-title text-3xl">ExcursionXpert</h6>
         <p className="text-xl">Welcome to Adventure Masters: <br /> Your Premier Destination for Unforgettable Journeys!</p>

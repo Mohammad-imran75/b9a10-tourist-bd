@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Helmet } from "react-helmet";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -84,6 +85,10 @@ const Update = () => {
   }
   return (
     <div className="bg-stone-200 font-montserrat font-bold">
+         <Helmet>
+        <title>Update Page</title>
+        <meta name="description" content="Helmet application" />
+      </Helmet>
       <form ref={formRef} onSubmit={handleTouristSpotUpdate}>
         <div className="grid md:grid-cols-2 gap-6 lg:max-w-5xl p-10 mx-auto mt-10 ">
           <div className="form-control">

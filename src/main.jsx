@@ -18,6 +18,7 @@ import AllTouristSpot from "./Routes/AllTouristSpot.jsx";
 import ViewDetailsPage from "./Pages/ViewDetailsPage.jsx";
 import PrivateRoutes from "./Provider/PrivateRoutes.jsx";
 import Update from "./Pages/Update.jsx";
+import AllTouristViewDetails from "./Routes/AllTouristViewDetails.jsx";
 
 const router = createBrowserRouter([
   {
@@ -62,6 +63,10 @@ const router = createBrowserRouter([
         path:"/update/:id",
         element:<Update></Update>,
         loader:({params})=>fetch(`http://localhost:5000/touristSpots/${params.id}`)
+      },{
+        path:'/allTouristViewdetails/:_id',
+        element:<PrivateRoutes><AllTouristViewDetails></AllTouristViewDetails></PrivateRoutes>,
+        loader:()=>fetch('http://localhost:5000/touristSpots')
       }
     ],
   },

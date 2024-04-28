@@ -1,8 +1,13 @@
+import { Helmet } from "react-helmet";
 
 
 const Feedback = () => {
     return (
         <div className="bg-orange-200 p-5">
+             <Helmet>
+        <title>Tourist FeedBack Rating</title>
+        <meta name="description" content="Helmet application" />
+      </Helmet>
             <div className="text-center mt-6">
                 <h1 className="text-5xl text-stone-700  font-bold">Tourist FeedBack <br /> Section</h1>
             </div>

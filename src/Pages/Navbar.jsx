@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const Navbar = () => {
   const { logOut, user } = useContext(AuthContext);
@@ -89,6 +90,10 @@ const Navbar = () => {
   );
   return (
     <div className="navbar bg-gradient-to-r from-purple-600 via-pink-400 to-red-400 rounded-lg p-4 font-montserrat">
+       <Helmet>
+        <title>NavBar</title>
+        <meta name="description" content="Helmet application" />
+      </Helmet>
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

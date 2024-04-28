@@ -1,5 +1,6 @@
 
 import { useRef } from "react";
+import { Helmet } from "react-helmet";
 import Swal from "sweetalert2";
 
 const AddTouristSpot = () => {
@@ -39,6 +40,10 @@ const AddTouristSpot = () => {
     }
   return (
     <div className="bg-stone-200 font-montserrat font-bold">
+       <Helmet>
+        <title>Add tourist spot</title>
+        <meta name="description" content="Helmet application" />
+      </Helmet>
       <form ref={formRef} onSubmit={handleAddedSpot}>
         <div className="grid md:grid-cols-2 gap-6 lg:max-w-5xl p-10 mx-auto mt-10 ">
           <div className="form-control">

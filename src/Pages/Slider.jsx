@@ -10,10 +10,15 @@ import {
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
+import { Helmet } from "react-helmet";
 
 const Slider = () => {
     return (
        <div className="font-nunito-sans">
+         <Helmet>
+        <title>Slider</title>
+        <meta name="description" content="Helmet application" />
+      </Helmet>
          <Swiper
         modules={[Navigation, Pagination, Scrollbar, A11y, EffectFade]}
         spaceBetween={50}
