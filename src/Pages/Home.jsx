@@ -1,6 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import Slider from "./Slider";
 import SpotCard from "./SpotCard";
+import Feedback from "./Feedback";
 
 
 const Home = () => {
@@ -16,6 +17,7 @@ const Home = () => {
                         touristSpots.map(spot=><SpotCard key={spot._id} spot={spot}></SpotCard>)
                     }
                 </div>
+                <Feedback></Feedback>
             </div>
         </div>
     );

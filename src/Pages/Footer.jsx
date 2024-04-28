@@ -2,7 +2,8 @@ import { FaMessage, FaPhone } from "react-icons/fa6";
 
 const Footer = () => {
   return (
-    <footer className="footer p-10 bg-stone-400 font-bold text-black">
+   <div>
+     <footer className="footer p-10 bg-stone-400 font-bold text-black">
       <nav>
         <h6 className="footer-title text-3xl">ExcursionXpert</h6>
         <p className="text-xl">Welcome to Adventure Masters: <br /> Your Premier Destination for Unforgettable Journeys!</p>
@@ -19,7 +20,6 @@ const Footer = () => {
         <h6 className="footer-title">Contact</h6>
         <a className="link link-hover flex items-center gap-3 font-bold"><FaPhone></FaPhone>+123 764 238</a>
         <a className="link link-hover flex items-center gap-3"><FaMessage className="text-2xl text-orange-800"></FaMessage> imranbd7531@gmail.com</a>
-        
       </nav>
       <nav>
         <h6 className="footer-title">Social</h6>
@@ -60,6 +60,8 @@ const Footer = () => {
         </div>
       </nav>
     </footer>
+   </div>
+    
   );
 };
 
