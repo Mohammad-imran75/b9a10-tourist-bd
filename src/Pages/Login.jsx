@@ -9,7 +9,7 @@ import { Helmet } from "react-helmet";
 const Login = () => {
     const navigate = useNavigate()
     const location = useLocation()
-  const { signInUser,setUser,googleLogin } = useContext(AuthContext);
+  const { signInUser,setUser,googleLogin,gitHubLogin} = useContext(AuthContext);
   const handleLoginUser = (e) => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
@@ -45,6 +45,23 @@ const Login = () => {
           setUser(result)
     })
     .catch(error=>console.error(error))
+  }
+  const handleGitHubLogin = () =>{
+    gitHubLogin()
+    .then(result=>{
+      Swal.fire({
+        icon: "success",
+        title: "Yah....",
+        text: "Loging in Successfull!",
+      });
+      setUser(result)
+    }).catch(error=>{
+      Swal.fire({
+        icon: "error",
+        title: "oops",
+        text: "please try again",
+      });
+    })
   }
   return (
     <div className="hero mt-10 bg-gray-200 p-10 font-nunito-sans">
@@ -99,7 +116,7 @@ const Login = () => {
           </div>
           <div className="flex justify-center gap-4 text-4xl p-3">
             <FcGoogle onClick={handleGoogleLogin}></FcGoogle>
-            <FaGithubSquare></FaGithubSquare>
+            <FaGithubSquare onClick={handleGitHubLogin}></FaGithubSquare>
           </div>
         </div>
       </div>

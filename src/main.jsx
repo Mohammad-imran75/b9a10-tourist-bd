@@ -19,6 +19,7 @@ import ViewDetailsPage from "./Pages/ViewDetailsPage.jsx";
 import PrivateRoutes from "./Provider/PrivateRoutes.jsx";
 import Update from "./Pages/Update.jsx";
 import AllTouristViewDetails from "./Routes/AllTouristViewDetails.jsx";
+import CountriesMatchDetails from "./Routes/CountriesMatchDetails.jsx";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,7 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home></Home>,
         loader: () => fetch("http://localhost:5000/touristSpots"),
+        
       },
       {
         path: "/addTourist",
@@ -66,6 +68,10 @@ const router = createBrowserRouter([
       },{
         path:'/allTouristViewdetails/:_id',
         element:<PrivateRoutes><AllTouristViewDetails></AllTouristViewDetails></PrivateRoutes>,
+        loader:()=>fetch('http://localhost:5000/touristSpots')
+      },{
+        path:'/countriesDetails/:coutryName',
+        element:<CountriesMatchDetails></CountriesMatchDetails>,
         loader:()=>fetch('http://localhost:5000/touristSpots')
       }
     ],
