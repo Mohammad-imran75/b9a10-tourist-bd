@@ -6,10 +6,12 @@ import {
   Scrollbar,
   A11y,
   EffectFade,
+  Autoplay
 } from "swiper/modules";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
+import "swiper/css/autoplay";
 import { Helmet } from "react-helmet";
 
 const Slider = () => {
@@ -20,13 +22,15 @@ const Slider = () => {
         <meta name="description" content="Helmet application" />
       </Helmet>
       <Swiper
-        modules={[Navigation, Pagination, Scrollbar, A11y, EffectFade]}
+        modules={[Navigation, Pagination,Autoplay, Scrollbar, A11y, EffectFade]}
         spaceBetween={50}
         effect="flip"
         slidesPerView={1}
         navigation
         pagination={{ clickable: true }}
         scrollbar={{ draggable: true }}
+        autoplay={{ delay: 3000 }}
+
       >
         <SwiperSlide>
           <img
