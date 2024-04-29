@@ -20,7 +20,7 @@ const AddTouristSpot = () => {
         const name = form.get('name')
         const touristSpot = form.get('touristSpot')
         const visitor = {touristSpot,name,email,totalVisitor,traveltime,seasonality,cost,description,location,coutryName,photo};
-        fetch("http://localhost:5000/touristSpots",{
+        fetch("https://assignment-ten-serverside.vercel.app/touristSpots",{
             method:'POST',
             headers:{
                 'content-type':'application/json'
@@ -41,7 +41,7 @@ const AddTouristSpot = () => {
   return (
     <div className="bg-stone-200 font-montserrat font-bold">
        <Helmet>
-        <title>Add tourist spot</title>
+        <title>Add tourist </title>
         <meta name="description" content="Helmet application" />
       </Helmet>
       <form ref={formRef} onSubmit={handleAddedSpot}>

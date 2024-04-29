@@ -7,7 +7,7 @@ const MyList = () => {
   const { user} = useContext(AuthContext);
   const [spots, setSpots] = useState([]);
   console.log(spots);
-  const url = `http://localhost:5000/touristSpot?email=${user?.email}`;
+  const url = `https://assignment-ten-serverside.vercel.app/touristSpot?email=${user?.email}`;
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())

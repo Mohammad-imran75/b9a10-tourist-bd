@@ -18,7 +18,7 @@ const MyListSingleSpot = ({ spot }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/touristSpots/${_id}`, {
+        fetch(`https://assignment-ten-serverside.vercel.app/touristSpots/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

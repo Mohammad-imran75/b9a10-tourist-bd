@@ -20,6 +20,7 @@ import PrivateRoutes from "./Provider/PrivateRoutes.jsx";
 import Update from "./Pages/Update.jsx";
 import AllTouristViewDetails from "./Routes/AllTouristViewDetails.jsx";
 import CountriesMatchDetails from "./Routes/CountriesMatchDetails.jsx";
+import CountriesDetails from "./Routes/CountriesDetails.jsx";
 
 const router = createBrowserRouter([
   {
@@ -30,7 +31,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("http://localhost:5000/touristSpots"),
+        loader: () => fetch("https://assignment-ten-serverside.vercel.app/touristSpots"),
         
       },
       {
@@ -45,7 +46,7 @@ const router = createBrowserRouter([
       {
         path: "/allTourist",
         element: <AllTouristSpot></AllTouristSpot>,
-        loader: () => fetch("http://localhost:5000/touristSpots"),
+        loader: () => fetch("https://assignment-ten-serverside.vercel.app/touristSpots"),
       },
       {
         path: "/login",
@@ -57,22 +58,25 @@ const router = createBrowserRouter([
       },{
         path:'/viewDetails/:_id',
         element:<PrivateRoutes><ViewDetailsPage></ViewDetailsPage></PrivateRoutes>,
-        loader:()=>fetch("http://localhost:5000/touristSpots")
+        loader:()=>fetch("https://assignment-ten-serverside.vercel.app/touristSpots")
       },{
         path:"*",
         element:<ErrorPage></ErrorPage>
       },{
         path:"/update/:id",
         element:<Update></Update>,
-        loader:({params})=>fetch(`http://localhost:5000/touristSpots/${params.id}`)
+        loader:({params})=>fetch(`https://assignment-ten-serverside.vercel.app/touristSpots/${params.id}`)
       },{
         path:'/allTouristViewdetails/:_id',
         element:<PrivateRoutes><AllTouristViewDetails></AllTouristViewDetails></PrivateRoutes>,
-        loader:()=>fetch('http://localhost:5000/touristSpots')
+        loader:()=>fetch('https://assignment-ten-serverside.vercel.app/touristSpots')
       },{
-        path:'/countriesDetails/:coutryName',
-        element:<CountriesMatchDetails></CountriesMatchDetails>,
-        loader:()=>fetch('http://localhost:5000/touristSpots')
+        path:'/countriesDetails/:countryName',
+        element:<CountriesMatchDetails></CountriesMatchDetails>
+      },{
+        path:'/countryViewDetails/:_id',
+        element:<CountriesDetails></CountriesDetails>,
+        loader:()=>fetch('https://assignment-ten-serverside.vercel.app/touristSpots')
       }
     ],
   },
