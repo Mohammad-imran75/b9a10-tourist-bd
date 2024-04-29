@@ -23,7 +23,7 @@ const MyList = () => {
       {
         <div className="gird lg:grid-cols-2 mt-10 bg-blue-300">
           {spots.map((spot) => (
-            <MyListSingleSpot key={spot._id} spot={spot}></MyListSingleSpot>
+            <MyListSingleSpot key={spot._id} setSpots={setSpots} spots={spots} spot={spot}></MyListSingleSpot>
           ))}
         </div>
       }

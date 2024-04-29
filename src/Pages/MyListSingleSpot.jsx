@@ -3,10 +3,10 @@ import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const MyListSingleSpot = ({ spot }) => {
+const MyListSingleSpot = ({ spot ,spots,setSpots}) => {
 
-  const [spots,setSpots] = useState(spot);
-  const {_id,photo,location,touristSpot,coutryName}= spots;
+  
+  const {_id,photo,location,touristSpot,coutryName}= spot;
   const handleDelete = (_id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -29,7 +29,7 @@ const MyListSingleSpot = ({ spot }) => {
                 text: "Your coffee has been deleted.",
                 icon: "success",
             });
-              const remaining = spot.filter(spo => spo._id !== _id)
+              const remaining = spots.filter(spo => spo._id !== _id)
               setSpots(remaining)
             }
           });
