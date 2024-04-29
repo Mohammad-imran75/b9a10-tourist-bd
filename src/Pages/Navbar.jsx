@@ -1,26 +1,20 @@
 import { useContext, useEffect, useState } from "react";
-import {
-  Link,
-  NavLink,
-  Navigate,
-  useLoaderData,
-  useLocation,
-  useNavigate,
-} from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
 
 const Navbar = () => {
   const { logOut, user } = useContext(AuthContext);
-  console.log(user);
   const navigate = useNavigate();
   const location = useLocation();
+
   const [currentUser, setCurrentUser] = useState();
-  console.log(currentUser);
+
   useEffect(() => {
     setCurrentUser(user);
   }, [user]);
+
   const handleSignOut = () => {
     logOut()
       .then((result) => {
@@ -28,15 +22,15 @@ const Navbar = () => {
         Swal.fire({
           icon: "success",
           title: "Yeah....",
-          text: "Please try anoth!",
+          text: "Please try another!",
         });
       })
       .catch((error) => console.error(error));
   };
+
   const NavLinks = (
     <>
       <li>
-        {" "}
         <NavLink
           className={({ isActive }) =>
             isActive
@@ -60,43 +54,50 @@ const Navbar = () => {
           All Tourist Spot
         </NavLink>
       </li>
-     {
-      user ? <> <li>
-      <NavLink
-        className={({ isActive }) =>
-          isActive
-            ? "text-orange-600 font-bold border-b-4 border-orange-500 mr-4 pb-1"
-            : "text-black mr-4"
-        }
-        to="/addTourist"
-      >
-        Add Tourist Spot
-      </NavLink>
-    </li>
-    <li>
-      <NavLink
-        className={({ isActive }) =>
-          isActive
-            ? "text-orange-600 font-bold border-b-4 border-orange-500 mr-4 pb-1"
-            : "text-black mr-4"
-        }
-        to="/mylist"
-      >
-        My List
-      </NavLink>
-    </li></>:""
-     }
+      {user && (
+        <>
+          <li>
+            <NavLink
+              className={({ isActive }) =>
+                isActive
+                  ? "text-orange-600 font-bold border-b-4 border-orange-500 mr-4 pb-1"
+                  : "text-black mr-4"
+              }
+              to="/addTourist"
+            >
+              Add Tourist Spot
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              className={({ isActive }) =>
+                isActive
+                  ? "text-orange-600 font-bold border-b-4 border-orange-500 mr-4 pb-1"
+                  : "text-black mr-4"
+              }
+              to="/mylist"
+            >
+              My List
+            </NavLink>
+          </li>
+        </>
+      )}
     </>
   );
+
   return (
     <div className="navbar bg-gradient-to-r from-purple-600 via-pink-400 to-red-400 rounded-lg p-4 font-montserrat">
-       <Helmet>
+      <Helmet>
         <title>NavBar</title>
         <meta name="description" content="Helmet application" />
       </Helmet>
       <div className="navbar-start">
         <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+          <div
+            tabIndex={0}
+            role="button"
+            className="btn btn-ghost lg:hidden"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -119,7 +120,7 @@ const Navbar = () => {
             {NavLinks}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">ExcursionXpert</a>
+        <a className="btn btn-ghost text-3xl text-red-500">ExcursionXpert</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{NavLinks}</ul>

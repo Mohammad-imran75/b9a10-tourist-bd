@@ -4,6 +4,7 @@ import SpotCard from "./SpotCard";
 import Feedback from "./Feedback";
 import Countries from "../Routes/Countries";
 import { Helmet } from "react-helmet";
+import LocalCuisine from "./LocalCuisine";
 
 const Home = () => {
   const touristSpots = useLoaderData().slice(0, 6);
@@ -16,8 +17,8 @@ const Home = () => {
       </Helmet>
       <div>
         <Slider></Slider>
-        <h2 className="text-5xl text-center mt-7 text-stone-700 font-extrabold">
-          Tourist <span className="text-purple-600">Spot</span> 
+        <h2 className="text-5xl text-center mt-7 text-violet-500 font-extrabold">
+          Tourist Spot in Different <br /> Country <span className="text-purple-600"></span> 
         </h2>
         <div className="grid lg:grid-cols-3 gap-4 mt-10 p-4">
           {touristSpots.map((spot) => (
@@ -26,6 +27,7 @@ const Home = () => {
         </div>
         <Feedback></Feedback>
         <Countries></Countries>
+        <LocalCuisine></LocalCuisine>
       </div>
     </div>
   );

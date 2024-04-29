@@ -11,6 +11,9 @@ const Countries = () => {
     },[])
     return (
         <div>
+            <div>
+                <h2 className="text-5xl p-7 text-center font-bold text-accent-content"> Countries section</h2>
+            </div>
             {
                 <div className="grid lg:grid-cols-3">
                     {

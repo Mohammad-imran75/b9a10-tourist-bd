@@ -9,7 +9,7 @@ const Feedback = () => {
         <meta name="description" content="Helmet application" />
       </Helmet>
             <div className="text-center mt-6">
-                <h1 className="text-5xl text-stone-700  font-bold">Traveler Reviews & Testimonials <br /> Rating</h1>
+                <h1 className="text-5xl text-stone-700  font-bold">Traveler Reviews & Testimonials <br/> <span className="text-rose-600 mt-2">Bangladesh Tourist Spot</span></h1>
             </div>
             <div className="font-nunito-sans grid lg:grid-cols-3 gap-4 mt-10 space-y-4">
             <div className="text-center">
