@@ -6,11 +6,16 @@ import { Helmet } from "react-helmet";
 
 const Navbar = () => {
   const { logOut, user } = useContext(AuthContext);
+  const [theme,setTheme] = useState("light");
+  // console.log(theme)
   const navigate = useNavigate();
   const location = useLocation();
 
   const [currentUser, setCurrentUser] = useState();
-
+// Function to toggle theme
+const toggleTheme = () => {
+  setTheme(theme === "light" ? "dark" : "light");
+};
   useEffect(() => {
     setCurrentUser(user);
   }, [user]);
@@ -18,12 +23,13 @@ const Navbar = () => {
   const handleSignOut = () => {
     logOut()
       .then((result) => {
-        navigate(location?.state ? location.state : "/");
+       
         Swal.fire({
           icon: "success",
           title: "Yeah....",
           text: "Please try another!",
         });
+        navigate(location?.state ? location.state : "/");
       })
       .catch((error) => console.error(error));
   };
@@ -86,18 +92,14 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar bg-gradient-to-r from-purple-600 via-pink-400 to-red-400 rounded-lg p-4 font-montserrat">
+    <div className={`navbar ${theme === "light" ? "light-theme" : "dark-theme"} bg-gradient-to-r from-purple-600 via-pink-400 to-red-400 rounded-lg p-4 font-montserrat`} >
       <Helmet>
         <title>NavBar</title>
         <meta name="description" content="Helmet application" />
       </Helmet>
       <div className="navbar-start">
         <div className="dropdown">
-          <div
-            tabIndex={0}
-            role="button"
-            className="btn btn-ghost lg:hidden"
-          >
+          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -127,9 +129,17 @@ const Navbar = () => {
       </div>
 
       <div className="navbar-end">
+      <input
+          data-toggle-theme="dark"
+          type="checkbox"
+          value={theme}
+          className="toggle theme-controller"
+          onChange={toggleTheme}
+          
+        />
         <div>
           <img
-            className="w-12 rounded-full lg: mr-4"
+            className="w-12 rounded-full lg: mr-4 "
             title={currentUser?.displayName}
             src={currentUser?.photoURL}
             alt=""

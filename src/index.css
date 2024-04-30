@@ -19,3 +19,10 @@
 .montserrat {
   font-family: "Montserrat", sans-serif;
 }
+
+[data-theme='dark'] {
+  --color-default: #252b30;
+}
+ body {
+	background-color: var(--color-default);
+ }
